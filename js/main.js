@@ -7,8 +7,9 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
+  const currentSection = updateActiveNav();
   navbar.classList.toggle('scrolled', window.scrollY > 20);
-  updateActiveNav();
+  navbar.classList.toggle('on-home', currentSection === 'home');
 });
 
 // ── Mobile nav toggle ────────────────────────
@@ -31,7 +32,10 @@ function updateActiveNav() {
   navLinks.forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
+  return current;
 }
+
+navbar.classList.toggle('on-home', updateActiveNav() === 'home');
 
 // ── Reveal on scroll ─────────────────────────
 const revealEls = document.querySelectorAll(

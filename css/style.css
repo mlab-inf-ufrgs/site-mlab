@@ -306,6 +306,35 @@ img {
   display: block;
 }
 
+.nav-logo-main {
+  height: 36px !important;
+  max-height: 36px !important;
+}
+
+.nav-logo-secondary {
+  display: none !important;
+  width: auto !important;
+  object-fit: contain;
+}
+
+#navbar.on-home .nav-logo-secondary {
+  display: block !important;
+}
+
+#navbar:not(.on-home) .nav-logo-secondary {
+  display: none !important;
+}
+
+.nav-logo-ufrgs {
+  height: 28px !important;
+  max-height: 28px !important;
+}
+
+.nav-logo-inf {
+  height: 26px !important;
+  max-height: 26px !important;
+}
+
 .nav-links {
   display: flex;
   gap: 4px;
@@ -320,14 +349,28 @@ img {
   transition: var(--transition);
 }
 
+#navbar.on-home .nav-links a {
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .nav-links a:hover {
   color: var(--text);
   background: var(--bg-3);
 }
 
+#navbar.on-home .nav-links a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
 .nav-links a.active {
   color: var(--accent);
   background: rgba(99, 102, 241, 0.08);
+}
+
+#navbar.on-home .nav-links a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .nav-toggle {
