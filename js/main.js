@@ -10,8 +10,29 @@ function updateLabMembersCount() {
   );
   if (labMembersCard) {
     const statNumber = labMembersCard.querySelector('.stat-number');
-    if (statNumber) statNumber.dataset.target = memberCount;
+    if (statNumber) {
+      statNumber.dataset.target = memberCount;
+      // Trigger counter animation
+      animateCounter(statNumber);
+    }
   }
+}
+
+// Counter animation function
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  let start = 0;
+  const duration = 1600;
+  el.textContent = '0';
+  
+  const step = timestamp => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
 }
 
 // Run on page load
