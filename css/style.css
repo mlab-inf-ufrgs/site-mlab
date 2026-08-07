@@ -917,71 +917,97 @@ img {
 }
 
 .person-card {
-  background: var(--surface);
+  background: #ffffff;
   border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px;
+  border-radius: 4px;
+  padding: 16px 16px 20px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 14px;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
+  gap: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+.person-card:nth-child(3n+1) {
+  transform: rotate(-1deg);
+}
+
+.person-card:nth-child(3n+2) {
+  transform: rotate(0.8deg);
+}
+
+.person-card:nth-child(3n) {
+  transform: rotate(-0.6deg);
 }
 
 .person-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.02) rotate(0deg);
+  box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12), 0 8px 16px rgba(0, 0, 0, 0.04);
   border-color: var(--accent);
-  box-shadow: var(--shadow-md);
+  z-index: 10;
 }
 
 .person-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
   overflow: hidden;
-  object-fit: cover;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  background: var(--bg-3);
 }
 
 .person-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 2px;
+  transition: transform 0.5s ease;
+}
+
+.person-card:hover .person-avatar img {
+  transform: scale(1.04);
+}
+
+.person-info {
+  width: 100%;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .person-info h3 {
   font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 0;
+  line-height: 1.3;
 }
 
-.person-info p {
-  font-size: 13px;
-  color: var(--text-muted);
+.person-research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2px;
 }
 
 .person-role {
   display: inline-block;
-  padding: 3px 12px;
+  padding: 2px 8px;
   border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
-  margin-bottom: 4px;
 }
 
 .person-role.faculty {
@@ -1020,29 +1046,120 @@ img {
   border: 1px solid rgba(100, 116, 139, 0.2);
 }
 
+.person-research-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+/* Colors for research lines */
+.person-research-tag.genomic {
+  background: rgba(139, 137, 255, 0.14);
+  color: #8b89ff;
+  border-color: rgba(139, 137, 255, 0.24);
+}
+.person-research-tag.genomic:hover {
+  background: rgba(139, 137, 255, 0.2);
+}
+
+.person-research-tag.multimodal {
+  background: rgba(0, 42, 97, 0.12);
+  color: #002a61;
+  border-color: rgba(0, 42, 97, 0.24);
+}
+.person-research-tag.multimodal:hover {
+  background: rgba(0, 42, 97, 0.18);
+}
+
+.person-research-tag.surveillance {
+  background: rgba(26, 101, 158, 0.12);
+  color: #1a659e;
+  border-color: rgba(26, 101, 158, 0.24);
+}
+.person-research-tag.surveillance:hover {
+  background: rgba(26, 101, 158, 0.18);
+}
+
+.person-research-tag.predictive {
+  background: rgba(12, 167, 200, 0.12);
+  color: #0ca7c8;
+  border-color: rgba(12, 167, 200, 0.24);
+}
+.person-research-tag.predictive:hover {
+  background: rgba(12, 167, 200, 0.18);
+}
+
+.person-research-tag.trust {
+  background: rgba(30, 175, 157, 0.12);
+  color: #1eaf9d;
+  border-color: rgba(30, 175, 157, 0.24);
+}
+.person-research-tag.trust:hover {
+  background: rgba(30, 175, 157, 0.18);
+}
+
 .person-links {
   display: flex;
   gap: 8px;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: 6px;
+  width: 100%;
 }
 
 .person-links a {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--bg-3);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  color: var(--text-muted);
   transition: var(--transition);
 }
 
-.person-links a:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+.person-links a svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Hover specific styles for brand links */
+.person-links a.linkedin:hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.3);
+}
+
+.person-links a.scholar:hover {
+  background: #4285f4;
+  border-color: #4285f4;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3);
+}
+
+.person-links a.email:hover {
+  background: #ea4335;
+  border-color: #ea4335;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(234, 67, 53, 0.3);
+}
+
+.person-links a.lattes:hover {
+  background: #003366;
+  border-color: #003366;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 51, 102, 0.3);
 }
 
 .person-card.hidden {
