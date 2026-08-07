@@ -2,6 +2,25 @@
    MLAB — Main JS
    ============================================= */
 
+// ── Auto-count lab members ───────────────────
+function updateLabMembersCount() {
+  const memberCount = document.querySelectorAll('.person-card').length;
+  const labMembersCard = Array.from(document.querySelectorAll('.stat-card')).find(card => 
+    card.textContent.includes('Lab Members')
+  );
+  if (labMembersCard) {
+    const statNumber = labMembersCard.querySelector('.stat-number');
+    if (statNumber) statNumber.dataset.target = memberCount;
+  }
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateLabMembersCount);
+} else {
+  updateLabMembersCount();
+}
+
 // ── Navbar scroll effect ─────────────────────
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
