@@ -576,7 +576,7 @@ img {
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: clamp(1rem, 2.1vw, 1.1rem);
   color: rgba(255, 255, 255, 0.9);
   max-width: 650px;
   margin: 120px auto 40px;
